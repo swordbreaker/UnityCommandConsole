@@ -10,7 +10,7 @@ namespace CommandConsole.ConsoleParser
             get
             {
                 return from regex in Parse.Regex(@"-?\s*[0-9]*\.*[0-9]*\s*")
-                       select new Variable(regex);
+                    select new Variable(regex);
             }
         }
 
@@ -62,10 +62,11 @@ namespace CommandConsole.ConsoleParser
 
         public static Parser<IValue> ValueParser
         {
-            get {
+            get
+            {
                 return ListParser.Select(list => (IValue)list)
                     .Or(ObjectParser.Select(o => (IValue)o))
-                    .Or(VariableParser.Select(variable => (IValue)variable)); 
+                    .Or(VariableParser.Select(variable => (IValue)variable));
             }
         }
     }
